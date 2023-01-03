@@ -260,7 +260,8 @@ void drawDig(byte dig, byte x, byte y) {
       lcd.write(0);
       lcd.write(6);
       lcd.write(2);
-      lcd.setCursor(x + 1, y + 1);
+      lcd.setCursor(x, y + 1);
+      lcd.write(4);
       lcd.write(4);
       lcd.write(5);
       break;
@@ -279,7 +280,7 @@ void drawDig(byte dig, byte x, byte y) {
 
 void drawdots(byte x, byte y, boolean state) {
   byte code;
-  if (state) code = 165;
+  if (state) code = 0x2E;
   else code = 32;
   lcd.setCursor(x, y);
   lcd.write(code);
@@ -315,13 +316,13 @@ static const char *dayNames[]  = {
 };
 #else
 static const char *dayNames[]  = {
-  "BOCK",
-  "POND",
-  "BTOP",
-  "CPED",
-  "4ETB",
-  "5YAT",
-  "CYBB",
+  "H\xE3",
+  "\xA8\xBD",
+  "B\xBF",
+  "Cp",
+  "\xC0\xBF",
+  "\xA8\xBF",
+  "C\xB2",
 };
 #endif
 
@@ -337,7 +338,7 @@ void drawData() {
     lcd.setCursor(16, 1);
     lcd.print(now.year());
   } else if (DISP_MODE == 1) {
-    lcd.setCursor(16, 1);
+    lcd.setCursor(17, 1);
     int dayofweek = now.dayOfTheWeek();
     lcd.print(dayNames[dayofweek]);
   }
@@ -437,7 +438,7 @@ void setLED(byte color) {
     case 3:
       if (!BLUE_YELLOW) analogWrite(LED_B, LED_ON);
       else {
-        analogWrite(LED_R, LED_ON - 50);    // чутка уменьшаем красный
+        analogWrite(LED_R, LED_ON - 0);    // чутка уменьшаем красный
         analogWrite(LED_G, LED_ON);
       }
       break;

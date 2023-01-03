@@ -103,7 +103,7 @@ void drawSensors() {
 #endif
 
   lcd.setCursor(0, 3);
-  lcd.print(String(dispPres) + " mm  rain ");
+  lcd.print(String(dispPres) + " \xBC\xBC \xE3o\xE6   ");
   lcd.print(F("       "));
   lcd.setCursor(13, 3);
   lcd.print(String(dispRain) + "%");
@@ -122,7 +122,7 @@ void drawSensors() {
 #endif
 
   lcd.setCursor(0, 1);
-  lcd.print(String(dispPres) + " mm  rain ");
+  lcd.print(String(dispPres) + " \xBC\xBC \xE3o\xE6   ");
   lcd.print(String(dispRain) + "% ");
 #endif
 }
